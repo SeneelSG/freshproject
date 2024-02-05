@@ -1,0 +1,27 @@
+.sidebar{
+    border: 1px solid black;
+    width: 17%;
+}
+
+
+.sidebar ul li{
+    padding: 0.5rem;
+    text-align: center;
+    list-style: none;
+    width: 180px;
+    font-weight: bolder;
+    font-size: larger;
+    margin: 0.5rem;
+    margin-left: -30px;
+}
+
+
+.sidebar ul li a {
+    color: black; 
+    text-decoration: none; 
+  }
+  
+  .sidebar ul li a:hover {
+    color: #007bff; 
+  }
+  
