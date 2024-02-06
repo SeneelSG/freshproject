@@ -50,9 +50,9 @@
     font-size: 18px; /* Font size for the submit button */
   }
    
-  button:hover {
-    background-color: #218838; /* Darker green on hover */
-  }
+  /* button:hover {
+    background-color: #218838; 
+  } */
    
   .result-table {
     width: 100%; /* Full width for the table */

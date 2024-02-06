@@ -58,7 +58,7 @@ const Navbar = () => {
             <li className="nav-list">
               <li className="nav-item">HR Lap <FontAwesomeIcon icon={faCaretDown} className='fontsize' />
                 <li className="dropdown">
-                  <li className="sub-item-1">Vender Lap <FontAwesomeIcon icon={faCaretDown} className='fontsize' />
+                  <li className="sub-item-1">Vendor Lap <FontAwesomeIcon icon={faCaretDown} className='fontsize' />
 
                     <li className="nested-dropdown1">
                       <li className="sub-item1"><Link to={"/home/venderRegistration"}>Registration</Link></li>
@@ -97,9 +97,44 @@ const Navbar = () => {
               </li>
               <li className="nav-item">Finance Lap <FontAwesomeIcon icon={faCaretDown} className='fontsize' />
                 <li className="dropdown">
-                <li className="sub-item1"><Link to={"/home/financeRegistration"}>Invoice Registration</Link></li>
-                      <li className="sub-item2"><Link to={"/home/financeSearch"}>Invoice Search</Link></li>
-                      <li className="sub-item3"><Link to={"/home/financeMangement"}>Invoice Management</Link></li>
+                <li className="sub-item11"><Link to={"/home/financeRegistration"}>Invoice Registration</Link></li>
+                      <li className="sub-item22"><Link to={"/home/financeSearch"}>Invoice Search</Link></li>
+                      <li className="sub-item33"><Link to={"/home/financeMangement"}>Invoice Management</Link></li>
+                </li>
+              </li>
+
+
+
+              <li className="nav-item1">Asset lap <FontAwesomeIcon icon={faCaretDown} className='fontsize' />
+                <li className="dropdown2">
+                  <li className="sub-item-4">Assets Registration <FontAwesomeIcon icon={faCaretDown} className='fontsize' />
+
+                    <li className="nested-dropdown4">
+                      <li className="sub-item4"><a href="#">1st Floor Asset</a></li>
+                      <li className="sub-item5"><a href="#">2nd Floor Asset</a></li>
+                      
+                    </li>
+
+                  </li>
+
+
+                  <li className="sub-item-5">Asset Search <FontAwesomeIcon icon={faCaretDown} className='fontsize' />
+
+                    <li className="nested-dropdown5">
+                    <li className="sub-item4"><a href="#">1st Floor Asset</a></li>
+                      <li className="sub-item5"><a href="#">2nd Floor Asset</a></li>
+                      
+                    </li>
+                  </li>
+
+
+                  <li className="sub-item-6">Asset Management <FontAwesomeIcon icon={faCaretDown} className='fontsize' />
+                    <li className="nested-dropdown6">
+                    <li className="sub-item4"><a href="#">1st Floor Asset</a></li>
+                      <li className="sub-item5"><a href="#">2nd Floor Asset</a></li>
+                     
+                    </li>
+                  </li>
                 </li>
               </li>
 
@@ -116,18 +151,18 @@ const Navbar = () => {
 
               <li className="nav-item">IT Recruitment Lap <FontAwesomeIcon icon={faCaretDown} className='fontsize' />
                 <li className="dropdown">
-                  <li className="sub-item1"><a href="#">Registration</a></li>
+                  <li className="sub-item1"><Link to={"/home/itlapregister"}>Registration</Link></li>
                   <li className="sub-item2"><a href="#">Search</a></li>
                   <li className="sub-item3"><a href="#">Management</a></li>
                 </li>
               </li>
 
 
-              <li className="nav-item">Requirement <FontAwesomeIcon icon={faCaretDown} className='fontsize' />
-                <li className="dropdown">
-                <li className="sub-item1"><Link to={"/home/addRequirement"}>Add Requirement</Link></li>
-                      <li className="sub-item2"><Link to={"/home/requirementSearch"}>Search</Link></li>
-                      <li className="sub-item3"><Link to={"/home/requirementMangement"}>Management</Link></li>
+              <li className="nav-item" >Requirement <FontAwesomeIcon icon={faCaretDown} className='fontsize' />
+                <li className="dropdown" id='requirement'>
+                <li className="sub-item30"><Link to={"/home/addRequirement"}>Add Requirement</Link></li>
+                      <li className="sub-item31"><Link to={"/home/requirementSearch"}>Search</Link></li>
+                      <li className="sub-item32"><Link to={"/home/requirementMangement"}>Management</Link></li>
                 </li>
               </li>
 

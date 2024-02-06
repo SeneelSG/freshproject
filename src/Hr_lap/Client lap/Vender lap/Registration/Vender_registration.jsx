@@ -74,6 +74,8 @@ export default function Vender_registration() {
  
       <div className="form-section">
         <form onSubmit={handleFormSubmit}>
+          <div className="vendormain">
+          <div className="firsthalf">
           <label htmlFor="vendorId">Vendor ID</label>
           <input
             type="text"
@@ -127,7 +129,10 @@ export default function Vender_registration() {
             value={payRoll}
             onChange={(e) => setPayRoll(e.target.value)}
           />
- 
+          </div>
+           
+
+           <div className="secondhalf">
           <label htmlFor="candidateName">Candidate Name</label>
           <input
             type="text"
@@ -182,11 +187,14 @@ export default function Vender_registration() {
             // value={cvFile}
             onChange={(e) => setCvFile(e.target.files[0])}
           />
- 
+        
           <br/>
- <button type="submit">Submit</button>
-         
+ 
+ </div>
+ </div>
+ <button type="submit" className="vendorsubmit">Submit</button>
         </form>
+       
       </div>
       {successMessage && <p className="success-message">{successMessage}</p>}
       {errorMessage && <p className="error-message">{errorMessage}</p>}

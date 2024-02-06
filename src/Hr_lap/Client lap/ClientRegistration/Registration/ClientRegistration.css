@@ -1,10 +1,10 @@
 /* ClientRegistration.css */
 
 .Register-form {
-    max-width: 600px;
+  max-width: 1050px;
     margin: auto;
-    padding: 20px;
-    border: 1px solid #ccc;
+    padding: 30px;
+    /* border: 1px solid #ccc; */
     border-radius: 5px;
     background-color: #f8f8f8;
   }
@@ -13,9 +13,11 @@
     margin-top: 20px;
   }
   
-  h3 {
-    text-align: center;
-    color: #333;
+  h4 {
+    font-size: 28px;
+    margin: 0px;
+    margin-bottom: -20px;
+    color: #17a2b8; /* Color for the form title */
   }
   
   label {
@@ -33,18 +35,17 @@
     border-radius: 4px;
   }
   
-  button {
-    background-color: #4caf50;
-    color: white;
-    padding: 10px 15px;
+  .clientbutton {
+    background-color: hsl(134, 61%, 41%); /* Green background color for the submit button */
+    color: #fff;
+    padding: 15px 20px;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
+    font-size: 18px; 
+    margin-left: 700px;
   }
   
-  button:hover {
-    background-color: #45a049;
-  }
   
   .success-message {
     color: green;

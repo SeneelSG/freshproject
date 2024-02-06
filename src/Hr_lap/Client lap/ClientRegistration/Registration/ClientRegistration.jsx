@@ -64,12 +64,15 @@ export default function ClientRegistration() {
  
   return (
     <div className="Register-form">
-      <h3>Client Registration</h3>
+      <h4>Client Registration</h4>
  
       {/* Section: Registration */}
       <div className="form-section">
         <form onSubmit={handleFormSubmit}>
           {/* ... (existing code for form inputs) */}
+
+          <div className="vendormain">
+          <div className="firsthalf">
  
           <label htmlFor="clientId">Client ID</label>
           <input
@@ -116,7 +119,8 @@ export default function ClientRegistration() {
              value={contactPerson}
              onChange={(e) => setContactPerson(e.target.value)}
            />
- 
+             </div>
+             <div className="secondhalf">
             <label htmlFor="contactNo">Contact No</label>
             <input
               type="number"
@@ -161,8 +165,11 @@ export default function ClientRegistration() {
                  value={remark}
                 onChange={(e) => setRemark(e.target.value)}
               />
+
+</div>
+ </div>
  
-          <button type="submit">Submit</button>
+          <button type="submit" className="clientbutton">Submit</button>
         </form>
       </div>
       {successMessage && (

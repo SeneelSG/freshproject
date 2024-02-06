@@ -16,6 +16,7 @@ import Vender_registration from "./Hr_lap/Client lap/Vender lap/Registration/Ven
 import Vendor_Search from "./Hr_lap/Client lap/Vender lap/Registration/Search/Vendor_Search";
 import Vender_management from "./Hr_lap/Client lap/Vender lap/Registration/Management/Vender_management";
 import ClientSearch from "./Hr_lap/Client lap/ClientRegistration/Search/ClientSearch";
+import ITRegistration from "./it_lap/it_lap_registration/ITRegistration";
 
 
 function App() {
@@ -34,6 +35,8 @@ function App() {
           <Route path="/home/venderRegistration" element={<Vender_registration/>}/>
           <Route path="/home/venderSearch" element={<Vendor_Search/>}/>
           <Route path="/home/venderManagement" element={<Vender_management/>}/>
+
+          <Route path="/home/itlapregister" element={<ITRegistration/>}/>
 
           <Route path="/home/timetracker" element={<TimeTracker/>}/>
           <Route path="/home/employeeprofile" element={<EmployeeProfile/>}/>
