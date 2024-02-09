@@ -17,6 +17,9 @@ import Vendor_Search from "./Hr_lap/Client lap/Vender lap/Registration/Search/Ve
 import Vender_management from "./Hr_lap/Client lap/Vender lap/Registration/Management/Vender_management";
 import ClientSearch from "./Hr_lap/Client lap/ClientRegistration/Search/ClientSearch";
 import ITRegistration from "./it_lap/it_lap_registration/ITRegistration";
+import FirstFloor from "./assets lap/assetregistration/1stfloor/FirstFloor";
+import SecondFloor from "./assets lap/assetregistration/2ndfloor/SecondFloor";
+import Add_Requirement from "./Requirement/AddRequirement/Add_Requirement";
 
 
 function App() {
@@ -36,7 +39,14 @@ function App() {
           <Route path="/home/venderSearch" element={<Vendor_Search/>}/>
           <Route path="/home/venderManagement" element={<Vender_management/>}/>
 
+
+          <Route path="/home/assetsRegistration1stFloor" element={<FirstFloor/>}/>
+          <Route path="/home/assetsRegistration2stFloor" element={<SecondFloor/>}/>
+
           <Route path="/home/itlapregister" element={<ITRegistration/>}/>
+
+
+          <Route path="/home/addRequirement" element={<Add_Requirement/>}/>
 
           <Route path="/home/timetracker" element={<TimeTracker/>}/>
           <Route path="/home/employeeprofile" element={<EmployeeProfile/>}/>

@@ -1,26 +1,26 @@
 /* ClientRegistration.css */
 
-.Register-form {
-  max-width: 1050px;
-    margin: auto;
-    padding: 30px;
-    /* border: 1px solid #ccc; */
-    border-radius: 5px;
-    background-color: #f8f8f8;
+.clientmain {
+  width: 1026px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #f8f9fa; 
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
   }
   
-  .form-section {
+  .clientmain .form-section {
     margin-top: 20px;
   }
   
-  h4 {
+  .heading {
     font-size: 28px;
     margin: 0px;
     margin-bottom: -20px;
     color: #17a2b8; /* Color for the form title */
   }
   
-  label {
+  .clientmain .form-section label {
     display: block;
     margin: 10px 0 5px;
     font-weight: bold;
@@ -35,15 +35,20 @@
     border-radius: 4px;
   }
   
-  .clientbutton {
-    background-color: hsl(134, 61%, 41%); /* Green background color for the submit button */
-    color: #fff;
-    padding: 15px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 18px; 
-    margin-left: 700px;
+  button {
+    background-color: #28a745; /* Green background color for the submit button */
+  color: #fff;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px; 
+  }
+
+
+  .clientsubmit{
+    margin-left: 69%;
+    margin-top: 10px;
   }
   
   

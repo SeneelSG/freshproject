@@ -110,8 +110,8 @@ const Navbar = () => {
                   <li className="sub-item-4">Assets Registration <FontAwesomeIcon icon={faCaretDown} className='fontsize' />
 
                     <li className="nested-dropdown4">
-                      <li className="sub-item4"><a href="#">1st Floor Asset</a></li>
-                      <li className="sub-item5"><a href="#">2nd Floor Asset</a></li>
+                      <li className="sub-item4"><Link to={"/home/assetsRegistration1stFloor"}>1st Floor Asset</Link></li>
+                      <li className="sub-item5"><Link to={"/home/assetsRegistration2stFloor"}>2nd Floor Asset</Link></li>
                       
                     </li>
 

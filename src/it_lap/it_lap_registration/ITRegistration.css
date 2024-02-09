@@ -1,31 +1,30 @@
 /* Registration Form Container */
-.Register-form {
+.itmain {
     max-width: 1050px;
-    /* width: 100%; */
+    
     margin: 0 auto;
     padding: 30px;
-    /* background-color: #f8f9fa;  */
-    text-align: center; /* Center the content */
+    
   }
   
-  /* Form Sections */
-  .form-section {
-    /* border: 1px solid black; */
+ 
+  .itmain .form-section {
+    
     margin-bottom: 20px;
   }
   
   /* Headers */
-   .form-section h3 {
+  .itmain .form-section h3 {
     cursor: pointer;
     padding: 10px;
     border: 1px solid black;
     width: 700px;
    margin-left: 100px;
+   text-align: left;
   }
   
-  /* Input Fields */ 
+ 
   input,
-  /* input[type="checkbox"], */
   textarea {
     width: 100%;
     padding: 8px;
@@ -42,8 +41,7 @@
   }
   
   /* Table Styles */
-  table {
-    /* border: 1px solid black; */
+  .itmain .form-section table {
     width: 700px;
     border-collapse: collapse;
     margin-bottom: 10px;
@@ -56,12 +54,6 @@
     text-align:left;
   }
   
-  /* Signature Section */
-  .d-flex {
-    display: flex;
-  }
-  
-  /* Additional Styling - Feel free to customize */
   h2 {
     color: #333;
 
@@ -72,15 +64,14 @@
   }
   
 
-  .itlapsubmit {
-    background-color: hsl(134, 61%, 41%); /* Green background color for the submit button */
-    color: #fff;
-    padding: 15px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 18px; /* Font size for the submit button */
-    /* margin-right: -60px; */
-    margin-left: 500px;
+.itlapsubmit{
+  margin-left: 72%;
+}
 
-  }
+
+.itheading{
+  font-size: 28px;
+    margin: 20px 250px 20px ;
+   
+    color: #17a2b8;
+}
