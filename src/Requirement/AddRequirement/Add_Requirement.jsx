@@ -173,7 +173,7 @@ const Add_Requirement = () => {
  
   return (
     <div className="add-requirement-container">
-      <h4 className="addheading">Add Requirement</h4>
+      <h4 className="addheading ">Add Requirement</h4>
       <table>
         <tbody>
           <tr>
@@ -334,8 +334,17 @@ const Add_Requirement = () => {
         </tbody>
       </table>
  
-      {/* Other form elements */}
- 
+    <div className="check1">
+<label>
+<input
+            className="radio"
+            type="checkbox"
+            checked={isAgreed}
+            onChange={handleAgreementChange}
+          />
+          I agree to the terms and conditions
+</label>
+</div>
       <div>
         <div className="final">
           <button onClick={handleSubmit}>Submit</button>

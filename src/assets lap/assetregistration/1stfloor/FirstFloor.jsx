@@ -43,17 +43,11 @@ export default function FirstFloor() {
       tables: "",
     },
   });
-
+ 
 
   
 
   const [successMessage, setSuccessMessage] = useState("");
-  // const toggleAccordion = (section) => {
-  //   setAccordionState((prevState) => ({
-  //     ...prevState,
-  //     [section]: !prevState[section],
-  //   }));
-  // };
 
   const resetFormFields = () => {
     setAccordionState((prevState) => ({
@@ -81,6 +75,7 @@ export default function FirstFloor() {
 
 // section1: Chairs
 const handleNormalChairsChange = (value) =>{
+  if (/^\d*$/.test(value) || value === "") {
   setAccordionState((prevState) => ({
     ...prevState,
     Chairs:{
@@ -89,7 +84,9 @@ const handleNormalChairsChange = (value) =>{
     },
   }));
 };
+}
 const handleWheelChairsChange = (value) => {
+  if (/^\d*$/.test(value) || value === "") {
   setAccordionState((prevState) => ({
     ...prevState,
     Chairs:{
@@ -98,8 +95,10 @@ const handleWheelChairsChange = (value) => {
     },
 }));
 };
+}
 //section2: Remote
 const handleACRemotesChange = (value)=> {
+  if (/^\d*$/.test(value) || value === "") {
   setAccordionState((prevState) =>({
     ...prevState,
     Remote:{
@@ -108,7 +107,9 @@ const handleACRemotesChange = (value)=> {
     },
   }));
 };
+}
   const handleFanRemotesChange = (value) =>{
+    if (/^\d*$/.test(value) || value === "") {
     setAccordionState((prevState)=> ({
       ...prevState,
       Remote:{
@@ -117,8 +118,10 @@ const handleACRemotesChange = (value)=> {
       },
   }));
 };
+  }
 //section3: Pedestals
 const handlePedestalsChange = (value)=> {
+  if (/^\d*$/.test(value) || value === "") {
   setAccordionState((prevState) =>({
     ...prevState,
     Pedestals:{
@@ -126,9 +129,11 @@ const handlePedestalsChange = (value)=> {
       pedestals:value,
     },
   }));
+}
 };
 //section4: AirConditioners
 const handleAirConditionersChange = (value)=> {
+  if (/^\d*$/.test(value) || value === "") {
   setAccordionState((prevState) =>({
     ...prevState,
     AirConditioners:{
@@ -136,9 +141,11 @@ const handleAirConditionersChange = (value)=> {
       airConditioners:value,
     },
   }));
+}
 };
 // section5: OtherAssets
 const handleLaptopsChange = (value) =>{
+  if (/^\d*$/.test(value) || value === "") {
   setAccordionState((prevState) => ({
     ...prevState,
     OtherAssets:{
@@ -146,8 +153,10 @@ const handleLaptopsChange = (value) =>{
       laptops:value,
     },
   }));
+}
 };
 const handleMousesChange = (value) =>{
+  if (/^\d*$/.test(value) || value === "") {
   setAccordionState((prevState) => ({
     ...prevState,
     OtherAssets:{
@@ -155,8 +164,10 @@ const handleMousesChange = (value) =>{
       mouses:value,
     },
   }));
+}
 };
 const handleChargersChange = (value) =>{
+  if (/^\d*$/.test(value) || value === "") {
   setAccordionState((prevState) => ({
     ...prevState,
     OtherAssets:{
@@ -164,8 +175,10 @@ const handleChargersChange = (value) =>{
       chargers:value,
     },
   }));
+}
 };
 const handleBagsChange = (value) =>{
+  if (/^\d*$/.test(value) || value === "") {
   setAccordionState((prevState) => ({
     ...prevState,
     OtherAssets:{
@@ -173,9 +186,11 @@ const handleBagsChange = (value) =>{
       bags:value,
     },
   }));
+}
 };
 //section3: Fans
 const handleFansChange = (value)=> {
+  if (/^\d*$/.test(value) || value === "") {
   setAccordionState((prevState) =>({
     ...prevState,
     Fans:{
@@ -184,7 +199,9 @@ const handleFansChange = (value)=> {
     },
   }));
 };
+}
 const handleDustbinsChange = (value)=> {
+  if (/^\d*$/.test(value) || value === "") {
   setAccordionState((prevState) =>({
     ...prevState,
     Dustbins:{
@@ -193,7 +210,9 @@ const handleDustbinsChange = (value)=> {
     },
   }));
 };
+}
 const handleTablesChange = (value)=> {
+  if (/^\d*$/.test(value) || value === "") {
   setAccordionState((prevState) =>({
     ...prevState,
     Tables:{
@@ -202,8 +221,28 @@ const handleTablesChange = (value)=> {
     },
   }));
 };
+}
 const handleSubmit = async () => {
   try {
+    const requiredFields = [
+      accordionState.Chairs.normalChairs,
+      accordionState.Chairs.wheelChairs,
+      accordionState.Remote.acRemotes,
+      accordionState.Remote.fanRemotes,
+      accordionState.Pedestals.pedestals,
+      accordionState.AirConditioners.airConditioners,
+      accordionState.OtherAssets.laptops,
+      accordionState.OtherAssets.mouses,
+      accordionState.OtherAssets.chargers,
+      accordionState.OtherAssets.bags,
+      accordionState.Fans.fans,
+      accordionState.Dustbins.dustbins,
+      accordionState.Tables.tables,
+    ];
+
+    if (requiredFields.some(field => field.trim() === "")) {
+      throw new Error("All fields are required");
+    }
     // Extract data without nested properties
     const dataToSend = {
       ...accordionState.Chairs,
@@ -250,6 +289,7 @@ const handleSubmit = async () => {
                   type="text"
                   value={accordionState.Chairs.normalChairs}
                   onChange={(e) => handleNormalChairsChange(e.target.value)}
+                  required
                 />
               </td>
             </tr>
@@ -331,7 +371,7 @@ const handleSubmit = async () => {
             <input
               type="text"
               value={accordionState.Pedestals.Pedestals}
-              onChange={(e) => handlePedestalsChange(e.target.value)}
+              onChange={(e) => handleAirConditionersChange(e.target.value)}
             />
             </td>
             </tr>
@@ -404,7 +444,7 @@ const handleSubmit = async () => {
            <input
              type="text"
              value={accordionState.Pedestals.Pedestals}
-             onChange={(e) => handlePedestalsChange(e.target.value)}
+             onChange={(e) => handleFansChange(e.target.value)}
            />
            </td>
            </tr>
@@ -424,7 +464,7 @@ const handleSubmit = async () => {
          <input
            type="text"
            value={accordionState.Pedestals.Pedestals}
-           onChange={(e) => handlePedestalsChange(e.target.value)}
+           onChange={(e) =>handleDustbinsChange(e.target.value)}
          />
          </td>
          </tr>
@@ -443,7 +483,7 @@ const handleSubmit = async () => {
           <input
             type="text"
             value={accordionState.Pedestals.Pedestals}
-            onChange={(e) => handlePedestalsChange(e.target.value)}
+            onChange={(e) =>handleTablesChange(e.target.value)}
           />
           </td>
           </tr>

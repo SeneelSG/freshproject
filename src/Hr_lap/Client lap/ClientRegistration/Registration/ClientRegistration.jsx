@@ -102,9 +102,9 @@ export default function ClientRegistration() {
             title="date must contain only numbers"
             required
           />
-          {date && !/^[0-9]*$/.test(date) && (
-  <p className="error-message">Please enter a valid date</p>
-)}
+         
+  
+
  
           <label htmlFor="clientName">Client Name</label>
           <input
@@ -198,10 +198,7 @@ export default function ClientRegistration() {
             title="meeting time must contain only numbers"
             required
                />
-               {meetingTime && !/^[0-9]*$/.test(meetingTime) && (
-  <p className="error-message">Meeting time must contain only numbers</p>
-)}
- 
+              
                <label htmlFor="whoInvolved">Who Involved</label>
                <input
                  type="text"

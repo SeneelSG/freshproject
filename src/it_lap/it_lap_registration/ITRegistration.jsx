@@ -5,33 +5,6 @@ import {
 } from "../../http-common";
 
 export default function ITRegistration() {
-    // const [name, setName] = useState("");
-    // const [mobileNumber, setMobileNumber] = useState("");
-    // const [emailId, setEmailId] = useState("");
-    // const [higherDegree, setHigherDegree] = useState("");
-    // const [passoutYear, setPassoutYear] = useState("");
-    // const [collegeName, setCollegeName] = useState("");
-    // const [university, setUniversity] = useState("");
-    // const [presentLocation, setPresentLocation] = useState("");
-    // const [referedBy, setReferedBy] = useState("");
-    // const [source, setSource] = useState("");
-    // const [interviewScheduled, setInterviewScheduled] = useState("");
-    // const [l1, setL1] = useState("");
-    // const [l2, setL2] = useState("");
-    // const [l3, setL3] = useState("");
-    // const [hrRound, setHrRound] = useState("");
-    // const [technology, setTechnology] = useState("");
-    // const [ctcLpa, setCtcLpa] = useState("");
-    // const [experience, setExperience] = useState("");
-    // const [expectedCtc, setExpectedCtc] = useState("");
-    // const [currentLocation, setCurrentLocation] = useState("");
-    // const [jobType, setJobType] = useState("");
-    // const [active, setActive] = useState("");
-    // const [inActive, setInActive] = useState("");
-    // const [successMessage, setSuccessMessage] = useState("");
-    // const [errorMessage, setErrorMessage] = useState("");
-
-
     const [formData, setFormData] = useState({
         candidateinfo: {
             name: "",
@@ -89,6 +62,27 @@ export default function ITRegistration() {
     };
 
     const handleInputChange = (section, field, value) => {
+        let validationMessage = "";
+        // Validate input based on field type (letters, numbers)
+        if (
+          (field === "mobileNumber" ||
+            field === "passoutYear" ||
+            field === "ctcLpa" ||
+            field === "experience" ||
+            field === "expectedCtc") &&
+          !/^\d+$/.test(value)
+        ) {
+          validationMessage = "Please enter only numbers.";
+        } else if (
+          (field !== "mobileNumber" &&
+            field !== "passoutYear" &&
+            field !== "ctcLpa" &&
+            field !== "experience" &&
+            field !== "expectedCtc") &&
+          !/^[a-zA-Z\s]+$/.test(value)
+        ) {
+          validationMessage = "Please enter only letters.";
+        }
         setFormData((prevData) => ({
             ...prevData,
             [section]: {
@@ -96,6 +90,7 @@ export default function ITRegistration() {
                 [field]: value,
             },
         }));
+        return validationMessage;
     };
 
     const handleCheckboxChange = (section, field) => {
@@ -150,12 +145,20 @@ export default function ITRegistration() {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
+        // Check for empty fields before submitting
+    const isEmptyField = Object.values(formData).some((section) =>
+    Object.values(section).some((field) => field === "")
+  );
+
+  if (isEmptyField) {
+    setErrorMessage("Please fill out all required fields.");
+    return;
+  }
+
         console.log("Form submitted:", formData);
 
         try {
             await itrecruitment(formData.candidateinfo);
-
-
             setSuccessMessage("Form submitted successfully!");
             handleReset(); // Reset form after successful submission
         } catch (error) {
@@ -188,7 +191,13 @@ export default function ITRegistration() {
                                         id="name"
                                         value={formData.candidateinfo.name}
                                         onChange={(e) => handleInputChange('candidateinfo', 'name', e.target.value)}
-                                    />
+                                        pattern="[A-Za-z\s]+"
+                                        title="Name must contain only letters"
+                                        required
+                                   />
+                                    {errorMessage && !formData.candidateinfo.name && (
+                    <span className="validation-error">{errorMessage}</span>
+                  )}
                                 </td>
                             </tr>
                             <tr>
@@ -200,7 +209,16 @@ export default function ITRegistration() {
                                         id="mobileNumber"
                                         value={formData.candidateinfo.mobileNumber}
                                         onChange={(e) => handleInputChange('candidateinfo', 'mobileNumber', e.target.value)}
+                                        pattern="[0-9]*"
+                                        title="mobile number must contain only numbers"
+                                        required
                                     />
+                                     {errorMessage &&
+                    !formData.candidateinfo.mobileNumber && (
+                      <span className="validation-error">
+                        {errorMessage}
+                      </span>
+                    )}
                                 </td>
                             </tr>
                             <tr>
@@ -212,7 +230,16 @@ export default function ITRegistration() {
                                         id="emailId"
                                         value={formData.candidateinfo.emailId}
                                         onChange={(e) => handleInputChange('candidateinfo', 'emailId', e.target.value)}
-                                    />
+                                        pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" // Basic email pattern
+                                        title="Please enter a valid email address"
+                                        required
+                                                        />
+                                                        {errorMessage &&
+                                                          !formData.candidateinfo.emailId && (
+                                                            <span className="validation-error">
+                                                              {errorMessage}
+                                                            </span>
+                                                          )}
                                 </td>
                             </tr>
                             <tr>
@@ -224,7 +251,16 @@ export default function ITRegistration() {
                                         id="higherDegree"
                                         value={formData.candidateinfo.higherDegree}
                                         onChange={(e) => handleInputChange('candidateinfo', 'higherDegree', e.target.value)}
-                                    />
+                                        pattern="[A-Za-z\s]+"
+                                        title="higher degree must contain only letters"
+                                        required
+                                              />
+                                              {errorMessage &&
+                                                !formData.candidateinfo.higherDegree && (
+                                                  <span className="validation-error">
+                                                    {errorMessage}
+                                                  </span>
+                                                )}
                                 </td>
                             </tr>
                             <tr>
@@ -236,7 +272,16 @@ export default function ITRegistration() {
                                         id="passoutYear"
                                         value={formData.candidateinfo.passoutYear}
                                         onChange={(e) => handleInputChange('candidateinfo', 'passoutYear', e.target.value)}
-                                    />
+                                        pattern="[0-9]*"
+                                        title="meeting time must contain only numbers"
+                                        required
+                                      />
+                                      {errorMessage &&
+                                        !formData.candidateinfo.passoutYear && (
+                                          <span className="validation-error">
+                                            {errorMessage}
+                                          </span>
+                                        )}
                                 </td>
                             </tr>
 
@@ -249,7 +294,16 @@ export default function ITRegistration() {
                                         id="collegeName"
                                         value={formData.candidateinfo.collegeName}
                                         onChange={(e) => handleInputChange('candidateinfo', 'collegeName', e.target.value)}
-                                    />
+                                        pattern="[A-Za-z\s]+"
+                                        title="college name must contain only letters"
+                                        required
+                                              />
+                                              {errorMessage &&
+                                                !formData.candidateinfo.collegeName && (
+                                                  <span className="validation-error">
+                                                    {errorMessage}
+                                                  </span>
+                                                )}
                                 </td>
                             </tr>
 
@@ -262,7 +316,16 @@ export default function ITRegistration() {
                                         id="university"
                                         value={formData.candidateinfo.university}
                                         onChange={(e) => handleInputChange('candidateinfo', 'university', e.target.value)}
-                                    />
+                                        pattern="[A-Za-z\s]+"
+                                        title="university must contain only letters"
+                                        required
+                                              />
+                                              {errorMessage &&
+                                                !formData.candidateinfo.university && (
+                                                  <span className="validation-error">
+                                                    {errorMessage}
+                                                  </span>
+                                                )}
                                 </td>
                             </tr>
 
@@ -275,7 +338,16 @@ export default function ITRegistration() {
                                         id="presentLocation"
                                         value={formData.candidateinfo.presentLocation}
                                         onChange={(e) => handleInputChange('candidateinfo', 'presentLocation', e.target.value)}
-                                    />
+                                        pattern="[A-Za-z\s]+"
+                                        title="present location must contain only letters"
+                                        required
+                                              />
+                                              {errorMessage &&
+                                                !formData.candidateinfo.presentLocation && (
+                                                  <span className="validation-error">
+                                                    {errorMessage}
+                                                  </span>
+                                                )}
                                 </td>
                             </tr>
 
@@ -289,7 +361,16 @@ export default function ITRegistration() {
                                         id="referedBy"
                                         value={formData.candidateinfo.referedBy}
                                         onChange={(e) => handleInputChange('candidateinfo', 'referedBy', e.target.value)}
-                                    />
+                                        pattern="[A-Za-z\s]+"
+                                        title="refered by must contain only letters"
+                                        required
+                                              />
+                                              {errorMessage &&
+                                                !formData.candidateinfo.referedBy && (
+                                                  <span className="validation-error">
+                                                    {errorMessage}
+                                                  </span>
+                                                )}
                                 </td>
                             </tr>
 
@@ -302,7 +383,16 @@ export default function ITRegistration() {
                                         id="source"
                                         value={formData.candidateinfo.source}
                                         onChange={(e) => handleInputChange('candidateinfo', 'source', e.target.value)}
-                                    />
+                                        pattern="[A-Za-z\s]+"
+                                        title="source must contain only letters"
+                                        required
+                                              />
+                                              {errorMessage &&
+                                                !formData.candidateinfo.source && (
+                                                  <span className="validation-error">
+                                                    {errorMessage}
+                                                  </span>
+                                                )}
                                 </td>
                             </tr>
                             {/* ... (other candidate details fields) */}
@@ -331,7 +421,16 @@ export default function ITRegistration() {
                                         id="technology"
                                         value={formData.screeningDetails.technology}
                                         onChange={(e) => handleInputChange('screeningDetails', 'technology', e.target.value)}
-                                    />
+                                        pattern="[A-Za-z\s]+"
+                                        title="technology must contain only letters"
+                                        required
+                                      />
+                                      {errorMessage &&
+                                        !formData.screeningDetails.technology && (
+                                          <span className="validation-error">
+                                            {errorMessage}
+                                          </span>
+                                        )}
                                 </td>
                             </tr>
                             <tr>
@@ -343,7 +442,16 @@ export default function ITRegistration() {
                                         id="ctcLpa"
                                         value={formData.screeningDetails.ctcLpa}
                                         onChange={(e) => handleInputChange('screeningDetails', 'ctcLpa', e.target.value)}
-                                    />
+                                        pattern="[0-9]*"
+                                        title=" ctcLpa must contain only numbers"
+                                        required
+                                              />
+                                              {errorMessage &&
+                                                !formData.screeningDetails.ctcLpa && (
+                                                  <span className="validation-error">
+                                                    {errorMessage}
+                                                  </span>
+                                                )}
                                 </td>
                             </tr>
                             <tr>
@@ -355,7 +463,16 @@ export default function ITRegistration() {
                                         id="experience"
                                         value={formData.screeningDetails.experience}
                                         onChange={(e) => handleInputChange('screeningDetails', 'experience', e.target.value)}
-                                    />
+                                        pattern="[0-9]*"
+                                        title="experience must contain only numbers"
+                                        required
+                                      />
+                                      {errorMessage &&
+                                        !formData.screeningDetails.experience && (
+                                          <span className="validation-error">
+                                            {errorMessage}
+                                          </span>
+                                        )}
                                 </td>
                             </tr>
                             <tr>
@@ -367,7 +484,16 @@ export default function ITRegistration() {
                                         id="expectedCtc"
                                         value={formData.screeningDetails.expectedCtc}
                                         onChange={(e) => handleInputChange('screeningDetails', 'expectedCtc', e.target.value)}
-                                    />
+                                        pattern="[0-9]*"
+                                        title="expectedCtc must contain only numbers"
+                                        required
+                                      />
+                                      {errorMessage &&
+                                        !formData.screeningDetails.expectedCtc && (
+                                          <span className="validation-error">
+                                            {errorMessage}
+                                          </span>
+                                        )}
                                 </td>
                             </tr>
                             <tr>
@@ -379,7 +505,14 @@ export default function ITRegistration() {
                                         id="currentLocation"
                                         value={formData.screeningDetails.currentLocation}
                                         onChange={(e) => handleInputChange('screeningDetails', 'currentLocation', e.target.value)}
-                                    />
+                                        required
+                                        />
+                                        {errorMessage &&
+                                          !formData.screeningDetails.currentLocation && (
+                                            <span className="validation-error">
+                                              {errorMessage}
+                                            </span>
+                                          )}
                                 </td>
                             </tr>
 
@@ -392,7 +525,14 @@ export default function ITRegistration() {
                                         id="jobType"
                                         value={formData.screeningDetails.jobType}
                                         onChange={(e) => handleInputChange('screeningDetails', 'jobType', e.target.value)}
-                                    />
+                                        required
+                                        />
+                                        {errorMessage &&
+                                          !formData.screeningDetails.jobType && (
+                                            <span className="validation-error">
+                                              {errorMessage}
+                                            </span>
+                                          )}
                                 </td>
                             </tr>
                             {/* ... (other candidate details fields) */}
@@ -421,7 +561,14 @@ export default function ITRegistration() {
                                         id="interviewschedule"
                                         value={formData.interviewdetails.interviewSchedule}
                                         onChange={(e) => handleInputChange('interviewdetails', 'interviewSchedule', e.target.value)}
-                                    />
+                                        required
+                                        />
+                                        {errorMessage &&
+                                          !formData.interviewdetails.interviewSchedule && (
+                                            <span className="validation-error">
+                                              {errorMessage}
+                                            </span>
+                                          )}
                                 </td>
                             </tr>
                             <tr>
@@ -433,7 +580,14 @@ export default function ITRegistration() {
                                         id="l1"
                                         value={formData.interviewdetails.l1}
                                         onChange={(e) => handleInputChange('interviewdetails', 'l1', e.target.value)}
-                                    />
+                                        required
+                                        />
+                                        {errorMessage &&
+                                          !formData.interviewdetails.l1 && (
+                                            <span className="validation-error">
+                                              {errorMessage}
+                                            </span>
+                                          )}
                                 </td>
                             </tr>
                             <tr>
@@ -445,11 +599,18 @@ export default function ITRegistration() {
                                         id="l2"
                                         value={formData.interviewdetails.l2}
                                         onChange={(e) => handleInputChange('interviewdetails', 'l2', e.target.value)}
-                                    />
+                                        required
+                                        />
+                                        {errorMessage &&
+                                          !formData.interviewdetails.l2 && (
+                                            <span className="validation-error">
+                                              {errorMessage}
+                                            </span>
+                                          )}
                                 </td>
                             </tr>
                             <tr>
-                                <td>L2:</td>
+                                <td>L3:</td>
                                 <td>
                                     <input
                                         type="text"
@@ -457,7 +618,14 @@ export default function ITRegistration() {
                                         id="l3"
                                         value={formData.interviewdetails.l3}
                                         onChange={(e) => handleInputChange('interviewdetails', 'l3', e.target.value)}
-                                    />
+                                        required
+                                        />
+                                        {errorMessage &&
+                                          !formData.interviewdetails.l3 && (
+                                            <span className="validation-error">
+                                              {errorMessage}
+                                            </span>
+                                          )}
                                 </td>
                             </tr>
                             <tr>
@@ -469,11 +637,17 @@ export default function ITRegistration() {
                                         id="hrround"
                                         value={formData.interviewdetails.hrRound}
                                         onChange={(e) => handleInputChange('interviewdetails', 'hrRound', e.target.value)}
-                                    />
+                                        required
+                                        />
+                                        {errorMessage &&
+                                          !formData.interviewdetails.hrRound &&
+                                          (
+                                            <span className="validation-error">
+                                              {errorMessage}
+                                            </span>
+                                          )}
                                 </td>
                             </tr>
-
-                            {/* ... (other candidate details fields) */}
                         </table>
                     )}
                 </form>
@@ -498,6 +672,11 @@ export default function ITRegistration() {
                                         checked={formData.status.active}
                                         onChange={() => handleCheckboxChange('status', 'active')}
                                     />
+                                     {errorMessage && !formData.status.active && (
+                    <span className="validation-error">
+                      {errorMessage}
+                    </span>
+                  )}
                                 </td>
                             </tr>
                             <tr>
@@ -510,9 +689,13 @@ export default function ITRegistration() {
                                         checked={formData.status.inactive}
                                         onChange={() => handleCheckboxChange('status', 'inactive')}
                                     />
+                                      {errorMessage && !formData.status.inactive && (
+                    <span className="validation-error">
+                      {errorMessage}
+                    </span>
+                  )}
                                 </td>
                             </tr>
-                            {/* ... (other candidate details fields) */}
                         </table>
                     )}
                 </form>
@@ -538,7 +721,14 @@ export default function ITRegistration() {
                                         id="clientMobileNumber"
                                         value={formData.clientsidedetails.clientMobileNumber}
                                         onChange={(e) => handleInputChange('clientsidedetails', 'clientMobileNumber', e.target.value)}
-                                    />
+                                        required
+                                        />
+                                        {errorMessage &&
+                                          !formData.clientsidedetails.clientMobileNumber && (
+                                            <span className="validation-error">
+                                              {errorMessage}
+                                            </span>
+                                          )}
                                 </td>
                             </tr>
                             <tr>
@@ -550,11 +740,16 @@ export default function ITRegistration() {
                                         id="clientEmailId"
                                         value={formData.clientsidedetails.clientEmailId}
                                         onChange={(e) => handleInputChange('clientsidedetails', 'clientEmailId', e.target.value)}
-                                    />
+                                        required
+                                        />
+                                        {errorMessage &&
+                                          !formData.clientsidedetails.clientEmailId && (
+                                            <span className="validation-error">
+                                              {errorMessage}
+                                            </span>
+                                          )}
                                 </td>
                             </tr>
-
-                            {/* ... (other candidate details fields) */}
                         </table>
                     )}
                 </form>
